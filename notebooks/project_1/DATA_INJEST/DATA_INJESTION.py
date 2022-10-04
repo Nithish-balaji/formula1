@@ -34,7 +34,7 @@ circuits_df = spark.read \
 
 # COMMAND ----------
 
-circuits_df.show()
+display(circuits_df)
 
 # COMMAND ----------
 
