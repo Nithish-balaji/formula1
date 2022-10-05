@@ -83,7 +83,11 @@ drivers_final_df.write.mode("overwrite").parquet(f"abfss://{container_name1}@{st
 
 # COMMAND ----------
 
-# MAGIC %run "/project_1/DATA_INJEST//END"
+drivers_final_df.write.mode("overwrite").format("delta").saveAsTable("f1_processed.drivers")
+
+# COMMAND ----------
+
+# MAGIC %run "/project_1/Data_Injection//END"
 
 # COMMAND ----------
 
