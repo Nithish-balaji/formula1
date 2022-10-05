@@ -1,5 +1,5 @@
 # Databricks notebook source
-v_result = dbutils.notebook.run("DATA_INJESTION", 0, {"p_data_source": "Ergast API"})
+v_result = dbutils.notebook.run("2.data_injestion", 0, {"p_data_source": "Ergast API"})
 
 # COMMAND ----------
 
@@ -7,7 +7,7 @@ v_result
 
 # COMMAND ----------
 
-v_result = dbutils.notebook.run("DATA_INJESTION1", 0, {"p_data_source": "Ergast API"})
+v_result = dbutils.notebook.run("7.ingest_lap_times_file", 0, {"p_data_source": "Ergast API"})
 
 # COMMAND ----------
 
