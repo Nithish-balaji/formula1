@@ -1,0 +1,14 @@
+-- Databricks notebook source
+-- MAGIC %run "../includes/configuration"
+
+-- COMMAND ----------
+
+-- MAGIC %python
+-- MAGIC spark.sql(" CREATE DATABASE IF NOT EXISTS f1_processed LOCATION 'abfss://{container_name1}@{storage_account_name}.dfs.core.windows.net' ")
+
+-- COMMAND ----------
+
+DESCRIBE DATABASE f1_processed;
+
+-- COMMAND ----------
+
