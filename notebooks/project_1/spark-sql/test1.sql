@@ -23,7 +23,7 @@ OPTIONS (path "/FileStore/tables/circuits.csv", header True)
 
 -- COMMAND ----------
 
-select * from f1_raw.circuits;
+
 
 -- COMMAND ----------
 
@@ -41,7 +41,7 @@ OPTIONS (path "/FileStore/tables/races.csv", header true)
 
 -- COMMAND ----------
 
-select * from f1_raw.races;
+
 
 -- COMMAND ----------
 
@@ -57,12 +57,11 @@ OPTIONS(path "/FileStore/tables/constructors.json")
 
 -- COMMAND ----------
 
--- MAGIC %python
--- MAGIC #/FileStore/tables/drivers.json
+
 
 -- COMMAND ----------
 
-select * from f1_raw.constructors;
+
 
 -- COMMAND ----------
 
@@ -81,7 +80,7 @@ OPTIONS (path "/FileStore/tables/drivers.json")
 
 -- COMMAND ----------
 
-select * from f1_raw.drivers;
+
 
 -- COMMAND ----------
 
@@ -109,7 +108,7 @@ OPTIONS(path "/FileStore/tables/results.json")
 
 -- COMMAND ----------
 
-select * from  f1_raw.results; 
+
 
 -- COMMAND ----------
 
@@ -127,7 +126,7 @@ OPTIONS (path "/FileStore/tables/lap")
 
 -- COMMAND ----------
 
-select count(*) from f1_raw.lap_times;
+
 
 -- COMMAND ----------
 
@@ -147,7 +146,7 @@ OPTIONS (path "/FileStore/tables/qualify", multiLine true)
 
 -- COMMAND ----------
 
-select * from f1_raw.qualifying;
+
 
 -- COMMAND ----------
 
