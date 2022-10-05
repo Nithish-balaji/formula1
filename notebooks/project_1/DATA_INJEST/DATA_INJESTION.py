@@ -131,4 +131,19 @@ display(df22)
 
 # COMMAND ----------
 
-# MAGIC %run "/project_1/DATA_INJEST//END"
+circuits_final_df.write.mode("overwrite").format("delta").saveAsTable("f1_processed.circuits")
+
+# COMMAND ----------
+
+races_selected_df.write.mode("overwrite").partitionBy('race_year').format("delta").saveAsTable("f1_processed.races")
+
+# COMMAND ----------
+
+constructor_final_df.write.mode("overwrite").format("delta").saveAsTable("f1_processed.constructors")
+
+# COMMAND ----------
+
+# MAGIC %run "/project_1/Data_Injection//END"
+
+# COMMAND ----------
+
