@@ -69,7 +69,7 @@ final_df.write.mode("overwrite").parquet(f"abfss://{container_name1}@{storage_ac
 
 # COMMAND ----------
 
-# MAGIC %run "/project_1/DATA_INJEST//END"
+# MAGIC %run "/project_1/Data_Injection//END"
 
 # COMMAND ----------
 
