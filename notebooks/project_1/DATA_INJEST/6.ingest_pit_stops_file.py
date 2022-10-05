@@ -13,6 +13,10 @@
 
 # COMMAND ----------
 
+# MAGIC %run "../includes/common_functions"
+
+# COMMAND ----------
+
 from pyspark.sql.types import StructType, StructField, IntegerType, StringType
 
 # COMMAND ----------
@@ -61,4 +65,16 @@ final_df.write.mode("overwrite").parquet(f"abfss://{container_name1}@{storage_ac
 
 # COMMAND ----------
 
-# MAGIC %run "/project_1/DATA_INJEST//END"
+ processed_folder_path = "abfss://{container_name2}@{storage_account_name}.dfs.core.windows.net"
+
+# COMMAND ----------
+
+merge_condition = "tgt.race_id = src.race_id AND tgt.driver_id = src.driver_id AND tgt.stop = src.stop AND tgt.race_id = src.race_id"
+merge_delta_data(final_df, 'f1_processed', 'pit_stops', processed_folder_path, merge_condition, 'race_id')
+
+# COMMAND ----------
+
+# MAGIC %run "/project_1/Data_Injection//END"
+
+# COMMAND ----------
+
