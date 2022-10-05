@@ -45,7 +45,7 @@ display(final_df.filter("race_year = 2020"))
 
 # COMMAND ----------
 
-final_df.write.mode("overwrite").parquet(f"abfss://{container_name1}@{storage_account_name}.dfs.core.windows.net/driver_standings")
+final_df.write.mode("overwrite").parquet(f"abfss://{container_name2}@{storage_account_name}.dfs.core.windows.net/driver_standings")
 
 # COMMAND ----------
 
