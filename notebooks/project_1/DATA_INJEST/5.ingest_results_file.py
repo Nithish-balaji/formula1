@@ -50,6 +50,7 @@ results_df = spark.read \
 # COMMAND ----------
 
 from pyspark.sql.functions import current_timestamp
+from pyspark.sql.functions import lit
 
 # COMMAND ----------
 
@@ -62,7 +63,27 @@ results_with_columns_df = results_df.withColumnRenamed("resultId", "result_id") 
                                     .withColumnRenamed("fastestLap", "fastest_lap") \
                                     .withColumnRenamed("fastestLapTime", "fastest_lap_time") \
                                     .withColumnRenamed("fastestLapSpeed", "fastest_lap_speed") \
-                                    .withColumn("ingestion_date", current_timestamp()) 
+                                    .withColumn("ingestion_date", current_timestamp())
+
+
+# COMMAND ----------
+
+dbutils.widgets.text("p_file_date", "2021-03-28")
+v_file_date = dbutils.widgets.get("p_file_date")
+
+# COMMAND ----------
+
+results_with_columns_df = results_df.withColumnRenamed("resultId", "result_id") \
+                                    .withColumnRenamed("raceId", "race_id") \
+                                    .withColumnRenamed("driverId", "driver_id") \
+                                    .withColumnRenamed("constructorId", "constructor_id") \
+                                    .withColumnRenamed("positionText", "position_text") \
+                                    .withColumnRenamed("positionOrder", "position_order") \
+                                    .withColumnRenamed("fastestLap", "fastest_lap") \
+                                    .withColumnRenamed("fastestLapTime", "fastest_lap_time") \
+                                    .withColumnRenamed("fastestLapSpeed", "fastest_lap_speed") \
+                                    .withColumn("data_source", lit(v_data_source)) \
+                                    .withColumn("file_date", lit(v_file_date))
 
 # COMMAND ----------
 
@@ -88,4 +109,15 @@ results_final_df.write.mode("overwrite").partitionBy('race_id').parquet(f"abfss:
 
 # COMMAND ----------
 
-# MAGIC %run "/project_1/DATA_INJEST//END"
+ results_final_df.write.mode("overwrite").partitionBy('race_id').format("parquet").saveAsTable("f1_processed.results")
+
+# COMMAND ----------
+
+display(results_final_df)
+
+# COMMAND ----------
+
+# MAGIC %run "/project_1/Data_Injection//END"
+
+# COMMAND ----------
+
